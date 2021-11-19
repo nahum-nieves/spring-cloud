@@ -1,0 +1,21 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+server:
+  port: ${SERVER_PORT:8501}
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  liquibase:
+    change-log: classpath:liquibase/db-changelog.xml
+datasource:
+  url: ${URL_DATASOURCE:jdbc:mariadb://localhost:3306/demo}
+  username: ${DATABASE_USER:root}
+  password: ${DATABASE_PWD:password-d}
+  driverClassName: org.mariadb.jdbc.Driver
