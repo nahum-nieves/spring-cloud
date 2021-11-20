@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
-http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
-    <changeSet id="20211001_1623" author="arturo.nieves">
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="20211811_2112" author="arturo.nieves">
         <sql>
-            CREATE TABLE Producto(
-                id  INT(11) NOT NULL AUTO_INCREMENT,
-                name varchar(30),
-                year varchar(30),
-                color varchar (30),
-                PRIMARY KEY (id)
+            CREATE TABLE User(
+                 id  INT(11) NOT NULL AUTO_INCREMENT,
+                 name varchar(30),
+                 lastname varchar(30),
+                 username varchar(30) UNIQUE,
+                 password varchar (30),
+                 PRIMARY KEY (id)
             )
         </sql>
     </changeSet>
+<!--    <changeSet id="20211811_2113" author="arturo.nieves">-->
+<!--    <sql>-->
+<!--        CREATE TABLE Account(-->
+<!--             id  INT(11) NOT NULL AUTO_INCREMENT,-->
+<!--             userId INT(11) NOT NULL,-->
+<!--             lastname varchar(30),-->
+<!--             username varchar(30),-->
+<!--             password varchar (30),-->
+<!--             PRIMARY KEY (id)-->
+<!--        )-->
+<!--    </sql>-->
+<!--</changeSet>-->
 </databaseChangeLog>

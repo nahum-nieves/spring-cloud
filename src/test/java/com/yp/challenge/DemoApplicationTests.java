@@ -1,4 +1,4 @@
-package com.yp;
+package com.yp.challenge;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

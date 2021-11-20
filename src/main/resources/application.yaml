@@ -19,3 +19,4 @@ datasource:
   username: ${DATABASE_USER:root}
   password: ${DATABASE_PWD:password-d}
   driverClassName: org.mariadb.jdbc.Driver
+

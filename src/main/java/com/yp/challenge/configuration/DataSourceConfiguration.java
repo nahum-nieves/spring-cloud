@@ -1,4 +1,4 @@
-package com.yp.configuration;
+package com.yp.challenge.configuration;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;

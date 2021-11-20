@@ -1,4 +1,4 @@
-package com.yp.configuration;
+package com.yp.challenge.configuration;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
