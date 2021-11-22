@@ -1,7 +1,7 @@
 package com.yp.challenge.configuration.security;
 
 import com.yp.challenge.dto.UserDto;
-import com.yp.challenge.repositories.UserRepository;
+import com.yp.challenge.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;

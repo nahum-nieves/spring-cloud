@@ -1,6 +1,6 @@
 package com.yp.challenge.configuration.security;
 
-import com.yp.challenge.repositories.UserRepository;
+import com.yp.challenge.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -53,6 +53,9 @@ public class AccountSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // Our public endpoints
                 .antMatchers("/login").permitAll()
+                .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/rest/docs").permitAll()
                 .anyRequest().authenticated();
 
         // Add JWT token filter

@@ -5,6 +5,18 @@ management:
         include: health,info,prometheus
 server:
   port: ${SERVER_PORT:8501}
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /rest/docs
+application:
+  account:
+    max-transactions: 3
+  exchange:
+    url: http://api.currencylayer.com/live
+    accessKey: 838d5394a997d33a9917f92d1e80b164
+
 spring:
   jpa:
     hibernate:
@@ -19,6 +31,6 @@ datasource:
   password: ${DATABASE_PWD:password-d}
   driverClassName: org.mariadb.jdbc.Driver
 security:
-  private-key-path: '/home/arturo/keys/private_key.der'
-  public-key-path: '/home/arturo/keys/public_key.der'
+  private-key-path: ${PRIVATE_KEY_PATH:/home/arturo/keys/private_key.der}
+  public-key-path:  ${PUPLIC_KEY_PATH:/home/arturo/keys/public_key.der}
 

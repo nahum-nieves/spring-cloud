@@ -20,16 +20,35 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
             INSERT INTO User(name,lastname,username,password) values('Dave','Mustaine','dmustaine','$2a$10$YhKLIIx.rsHWk6VY.G0x/.uqA6X7EHekpa5C7/CPnym//E6O4B0ja');
         </sql>
     </changeSet>
-<!--    <changeSet id="20211811_2113" author="arturo.nieves">-->
-<!--    <sql>-->
-<!--        CREATE TABLE Account(-->
-<!--             id  INT(11) NOT NULL AUTO_INCREMENT,-->
-<!--             userId INT(11) NOT NULL,-->
-<!--             lastname varchar(30),-->
-<!--             username varchar(30),-->
-<!--             password varchar (30),-->
-<!--             PRIMARY KEY (id)-->
-<!--        )-->
-<!--    </sql>-->
-<!--</changeSet>-->
+    <changeSet id="20211811_2114" author="arturo.nieves">
+        <sql>
+        CREATE TABLE Account(
+            id  INT(11) NOT NULL AUTO_INCREMENT,
+            userId INT(11) NOT NULL,
+            balance DECIMAL(22,8),
+            currency varchar(3),
+            PRIMARY KEY (id),
+            CONSTRAINT fk_Account_User FOREIGN KEY (userId) REFERENCES User (id)
+        )
+        </sql>
+    </changeSet>
+    <changeSet id="20211811_2115" author="arturo.nieves">
+        <sql>
+            CREATE TABLE AccountLimit(
+                accountId INT(11),
+                transactions TINYINT UNSIGNED,
+                lastTransaction date,
+                CONSTRAINT fk_AccountLimit_Account FOREIGN KEY (accountId) REFERENCES Account (id),
+                PRIMARY KEY (accountId)
+            )
+        </sql>
+    </changeSet>
+    <changeSet id="20211811_2116" author="arturo.nieves">
+        <sql>
+            INSERT INTO Account (userId, balance, currency)
+            SELECT id, 20000.00, "USD"
+            FROM User
+            WHERE username = "dmustaine";
+        </sql>
+    </changeSet>
 </databaseChangeLog>

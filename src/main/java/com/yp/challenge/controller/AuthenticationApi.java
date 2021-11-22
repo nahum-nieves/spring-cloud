@@ -1,11 +1,14 @@
 package com.yp.challenge.controller;
 
-import com.yp.challenge.dto.LoginRequest;
-import com.yp.challenge.dto.UserDto;
-import com.yp.challenge.model.User;
 import com.yp.challenge.configuration.security.JwtSignator;
+import com.yp.challenge.dto.LoginRequest;
 import com.yp.challenge.dto.mapper.UserMapper;
+import com.yp.challenge.model.User;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,16 +33,20 @@ public class AuthenticationApi {
     private final UserMapper userMapper;
 
     @PostMapping("login")
-    public ResponseEntity<UserDto> login(@RequestBody @Valid LoginRequest request) {
+    @ApiOperation(value = "Authentication method",tags = "Authentication")
+    @ApiResponses(value = {
+            @ApiResponse(code = 202, message = "Login succes, your JWT is in 'Authorization' header response"),
+            @ApiResponse(code = 401, message = "Bad Credentials, checkout your credentials") })
+    public ResponseEntity login(@RequestBody @ApiParam(name = "Credentials",required = true) @Valid LoginRequest request) {
         try {
             final Authentication authenticate = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
             User user = (User) authenticate.getPrincipal();
-            return ResponseEntity.ok()
+            return ResponseEntity.status(HttpStatus.ACCEPTED)
                     .header( HttpHeaders.AUTHORIZATION, jwtSignator.generateAccessToken(user))
                     .build();
         } catch (BadCredentialsException ex) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bad Credentials");
         }
     }
 }

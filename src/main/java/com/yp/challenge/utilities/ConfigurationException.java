@@ -1,10 +1,11 @@
 package com.yp.challenge.utilities;
 
-public class ConfigurationException extends RuntimeException{
-    public ConfigurationException(String reason){
+public class ConfigurationException extends RuntimeException {
+    public ConfigurationException(String reason) {
         super(reason);
     }
-    public ConfigurationException(String reason, Exception exception){
-        super(reason,exception);
+
+    public ConfigurationException(String reason, Exception exception) {
+        super(reason, exception);
     }
 }
