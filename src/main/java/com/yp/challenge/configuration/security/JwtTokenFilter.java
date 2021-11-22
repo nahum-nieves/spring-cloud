@@ -1,5 +1,6 @@
 package com.yp.challenge.configuration.security;
 
+import com.yp.challenge.dto.UserDto;
 import com.yp.challenge.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -20,38 +21,38 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collections;
 
+import static com.yp.challenge.configuration.security.JwtConfig.TOKEN_PREFIX;
+
 @Component
 @RequiredArgsConstructor
 public class JwtTokenFilter extends OncePerRequestFilter {
 
-    private final JwtTranslator jwtTokenUtil;
+    private final JwtValidator jwtValidator;
     private final UserRepository userRepo;
 
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain chain)
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         // Get authorization header and validate
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (StringUtils.isEmpty(header) || !header.startsWith("Bearer ")) {
+        if (StringUtils.isEmpty(header) || !header.startsWith(TOKEN_PREFIX)) {
             chain.doFilter(request, response);
             return;
         }
 
         // Get jwt token and validate
-        final String token = header.split(" ")[1].trim();
-        if (!jwtTokenUtil.validate(token)) {
+        final String token = header.replace(TOKEN_PREFIX,"");
+        if (!jwtValidator.validate(token)) {
             chain.doFilter(request, response);
             return;
         }
 
         // Get user identity and set it on the spring security context
-        String username = jwtTokenUtil.getUsername(token);
+        UserDto user = jwtValidator.getUserId(token);
         UserDetails userDetails = userRepo
-                .findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User {} doesn't exist", username)));
+                .findByUsername(user.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User {} doesn't exist", user.getUsername())));
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 userDetails, null,

@@ -10,9 +10,14 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
                  name varchar(30),
                  lastname varchar(30),
                  username varchar(30) UNIQUE,
-                 password varchar (30),
+                 password varchar (60),
                  PRIMARY KEY (id)
             )
+        </sql>
+    </changeSet>
+    <changeSet id="20211811_2113" author="arturo.nieves">
+        <sql>
+            INSERT INTO User(name,lastname,username,password) values('Dave','Mustaine','dmustaine','$2a$10$YhKLIIx.rsHWk6VY.G0x/.uqA6X7EHekpa5C7/CPnym//E6O4B0ja');
         </sql>
     </changeSet>
 <!--    <changeSet id="20211811_2113" author="arturo.nieves">-->

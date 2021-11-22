@@ -3,7 +3,7 @@ package com.yp.challenge.controller;
 import com.yp.challenge.dto.LoginRequest;
 import com.yp.challenge.dto.UserDto;
 import com.yp.challenge.model.User;
-import com.yp.challenge.configuration.security.JwtTranslator;
+import com.yp.challenge.configuration.security.JwtSignator;
 import com.yp.challenge.dto.mapper.UserMapper;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ import javax.validation.Valid;
 public class AuthenticationApi {
 
     private final AuthenticationManager authenticationManager;
-    private final JwtTranslator jwtTranslator;
+    private final JwtSignator jwtSignator;
     private final UserMapper userMapper;
 
     @PostMapping("login")
@@ -36,8 +36,8 @@ public class AuthenticationApi {
                     .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
             User user = (User) authenticate.getPrincipal();
             return ResponseEntity.ok()
-                    .header( HttpHeaders.AUTHORIZATION, jwtTranslator.generateAccessToken(user))
-                    .body(userMapper.toUserView(user));
+                    .header( HttpHeaders.AUTHORIZATION, jwtSignator.generateAccessToken(user))
+                    .build();
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

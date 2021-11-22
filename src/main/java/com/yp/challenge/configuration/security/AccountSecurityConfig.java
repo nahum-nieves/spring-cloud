@@ -26,7 +26,6 @@ public class AccountSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.userDetailsService(s -> {
             return userRepository.findByUsername(s).orElseThrow(() -> new BadCredentialsException("Bad Credentials"));
         });
@@ -42,17 +41,13 @@ public class AccountSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and();
 
-        http = http
-                .exceptionHandling()
-                .authenticationEntryPoint(
-                        (request, response, ex) -> {
-                            response.sendError(
-                                    HttpServletResponse.SC_UNAUTHORIZED,
-                                    ex.getMessage()
-                            );
-                        }
-                )
-                .and();
+        http = http.exceptionHandling()
+            .authenticationEntryPoint( (request, response, ex) -> {
+                response.sendError(
+                        HttpServletResponse.SC_UNAUTHORIZED,
+                        ex.getMessage()
+                );
+            }).and();
 
         // Set permissions on endpoints
         http.authorizeRequests()
@@ -76,5 +71,7 @@ public class AccountSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("password"));
+    }
 }

@@ -8,7 +8,6 @@ server:
 spring:
   jpa:
     hibernate:
-      ddl-auto: create-drop
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
@@ -19,4 +18,7 @@ datasource:
   username: ${DATABASE_USER:root}
   password: ${DATABASE_PWD:password-d}
   driverClassName: org.mariadb.jdbc.Driver
+security:
+  private-key-path: '/home/arturo/keys/private_key.der'
+  public-key-path: '/home/arturo/keys/public_key.der'
 
