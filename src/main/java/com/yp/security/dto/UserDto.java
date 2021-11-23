@@ -1,4 +1,4 @@
-package com.yp.challenge.dto;
+package com.yp.security.dto;
 
 import lombok.Data;
 

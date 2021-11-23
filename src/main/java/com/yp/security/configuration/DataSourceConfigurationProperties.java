@@ -1,4 +1,4 @@
-package com.yp.challenge.configuration;
+package com.yp.security.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

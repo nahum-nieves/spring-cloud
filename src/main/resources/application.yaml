@@ -4,7 +4,7 @@ management:
       exposure:
         include: health,info,prometheus
 server:
-  port: ${SERVER_PORT:8501}
+  port: ${SERVER_PORT:8081}
 springfox:
   documentation:
     swagger:
@@ -34,3 +34,13 @@ security:
   private-key-path: ${PRIVATE_KEY_PATH:/home/arturo/keys/private_key.der}
   public-key-path:  ${PUPLIC_KEY_PATH:/home/arturo/keys/public_key.der}
 
+eureka:
+  instance:
+    appname: facade
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      fetch-registry: true
+      fetchRegistry: true
+      register-with-eureka: false
+      registerWithEureka: false

@@ -1,4 +1,4 @@
-package com.yp.challenge;
+package com.yp.security;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

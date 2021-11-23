@@ -1,4 +1,4 @@
-package com.yp.challenge.configuration;
+package com.yp.security.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

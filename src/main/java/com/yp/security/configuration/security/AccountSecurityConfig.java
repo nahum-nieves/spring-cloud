@@ -1,6 +1,6 @@
-package com.yp.challenge.configuration.security;
+package com.yp.security.configuration.security;
 
-import com.yp.challenge.dao.UserRepository;
+import com.yp.security.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,10 +49,12 @@ public class AccountSecurityConfig extends WebSecurityConfigurerAdapter {
                 );
             }).and();
 
-        // Set permissions on endpoints
+
+//         Set permissions on endpoints
         http.authorizeRequests()
                 // Our public endpoints
                 .antMatchers("/login").permitAll()
+                .antMatchers("/eureka/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/rest/docs").permitAll()

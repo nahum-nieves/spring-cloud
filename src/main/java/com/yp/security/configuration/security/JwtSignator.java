@@ -1,10 +1,10 @@
-package com.yp.challenge.configuration.security;
+package com.yp.security.configuration.security;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yp.challenge.dto.mapper.UserMapper;
-import com.yp.challenge.model.User;
-import com.yp.challenge.utilities.ConfigurationException;
+import com.yp.security.dto.mapper.UserMapper;
+import com.yp.security.model.User;
+import com.yp.security.utilities.ConfigurationException;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import static com.yp.challenge.configuration.security.JwtConfig.TOKEN_PREFIX;
+import static com.yp.security.configuration.security.JwtConfig.TOKEN_PREFIX;
 import static java.lang.String.format;
 
 @Component

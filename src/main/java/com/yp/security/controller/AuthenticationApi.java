@@ -1,9 +1,9 @@
-package com.yp.challenge.controller;
+package com.yp.security.controller;
 
-import com.yp.challenge.configuration.security.JwtSignator;
-import com.yp.challenge.dto.LoginRequest;
-import com.yp.challenge.dto.mapper.UserMapper;
-import com.yp.challenge.model.User;
+import com.yp.security.configuration.security.JwtSignator;
+import com.yp.security.dto.LoginRequest;
+import com.yp.security.dto.mapper.UserMapper;
+import com.yp.security.model.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

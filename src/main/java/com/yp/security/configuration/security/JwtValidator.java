@@ -1,10 +1,8 @@
-package com.yp.challenge.configuration.security;
+package com.yp.security.configuration.security;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yp.challenge.dto.UserDto;
-import com.yp.challenge.utilities.ConfigurationException;
+import com.yp.security.dto.UserDto;
+import com.yp.security.utilities.ConfigurationException;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

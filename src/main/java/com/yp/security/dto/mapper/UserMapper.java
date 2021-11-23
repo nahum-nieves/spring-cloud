@@ -1,7 +1,7 @@
-package com.yp.challenge.dto.mapper;
+package com.yp.security.dto.mapper;
 
-import com.yp.challenge.dto.UserDto;
-import com.yp.challenge.model.User;
+import com.yp.security.dto.UserDto;
+import com.yp.security.model.User;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

@@ -1,4 +1,4 @@
-package com.yp.challenge.utilities;
+package com.yp.security.utilities;
 
 public class ConfigurationException extends RuntimeException {
     public ConfigurationException(String reason) {

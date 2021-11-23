@@ -1,4 +1,4 @@
-package com.yp.challenge.configuration.security;
+package com.yp.security.configuration.security;
 
 import lombok.Getter;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;

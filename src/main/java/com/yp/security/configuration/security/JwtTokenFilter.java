@@ -1,7 +1,7 @@
-package com.yp.challenge.configuration.security;
+package com.yp.security.configuration.security;
 
-import com.yp.challenge.dto.UserDto;
-import com.yp.challenge.dao.UserRepository;
+import com.yp.security.dto.UserDto;
+import com.yp.security.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collections;
 
-import static com.yp.challenge.configuration.security.JwtConfig.TOKEN_PREFIX;
+import static com.yp.security.configuration.security.JwtConfig.TOKEN_PREFIX;
 
 @Component
 @RequiredArgsConstructor

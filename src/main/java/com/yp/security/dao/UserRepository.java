@@ -1,6 +1,6 @@
-package com.yp.challenge.dao;
+package com.yp.security.dao;
 
-import com.yp.challenge.model.User;
+import com.yp.security.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

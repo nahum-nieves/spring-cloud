@@ -1,4 +1,4 @@
-package com.yp.challenge.model;
+package com.yp.security.model;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Data
